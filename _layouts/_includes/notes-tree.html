@@ -1,0 +1,34 @@
+<ul class="notes-tree">
+  {% assign sorted_notes = site.notes | sort: 'path' | sort: 'order' %}
+  {% capture folder_names %}{% for note in sorted_notes %}{% assign prefix_length = include.prefix | size %}{% assign note_prefix = note.path | slice: 0, prefix_length %}{% if note_prefix == include.prefix %}{% assign relative_path = note.path | remove_first: include.prefix %}{% assign parts = relative_path | split: '/' %}{% if parts.size > 1 %}{{ parts.first }}|{% endif %}{% endif %}{% endfor %}{% endcapture %}
+  {% for note in sorted_notes %}
+    {% assign prefix_length = include.prefix | size %}
+    {% assign note_prefix = note.path | slice: 0, prefix_length %}
+    {% if note_prefix == include.prefix %}
+      {% assign relative_path = note.path | remove_first: include.prefix %}
+      {% assign parts = relative_path | split: '/' %}
+      {% if parts.size == 1 %}
+        <li class="note-item"><a href="{{ note.url | relative_url }}"{% if page.url == note.url %} aria-current="page"{% endif %}><span>{{ note.title | escape }}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%Y.%m.%d" }}</time></a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% assign folders = folder_names | split: '|' | uniq | sort %}
+  {% for folder in folders %}
+    {% unless folder == '' %}
+      <li class="note-folder">
+        {% assign child_prefix = include.prefix | append: folder | append: '/' %}
+        {% if include.sidebar %}
+          {% assign child_prefix_length = child_prefix | size %}
+          {% assign current_prefix = page.path | slice: 0, child_prefix_length %}
+          <details{% if current_prefix == child_prefix %} open{% endif %}>
+            <summary class="folder-label">{{ folder | escape }}</summary>
+            {% include _includes/notes-tree.html prefix=child_prefix sidebar=true %}
+          </details>
+        {% else %}
+          <span class="folder-label">{{ folder | escape }}</span>
+          {% include _includes/notes-tree.html prefix=child_prefix %}
+        {% endif %}
+      </li>
+    {% endunless %}
+  {% endfor %}
+</ul>

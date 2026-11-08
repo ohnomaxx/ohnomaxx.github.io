@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+    <meta name="description" content="{{ site.description | escape }}">
+    <link rel="stylesheet" href="https://fontsapi.zeoseven.com/442/main/result.css">
+    <style>{% include assets/css/site.css %}</style>
+    {% feed_meta %}
+  </head>
+  <body{% if page.collection == "notes" %} class="note-page"{% endif %}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+      <nav aria-label="Main navigation"><a href="{{ '/' | relative_url }}">Notes</a><a href="{{ '/posts/' | relative_url }}">Posts</a><a href="{{ '/about/' | relative_url }}">About</a></nav>
+    </header>
+    <main id="main">{{ content }}</main>
+  </body>
+</html>

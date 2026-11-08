@@ -1,3 +1,23 @@
-theme: jekyll-theme-minimal
 title: ohnomaxx
-description: fairly average attempt to become a hacker :D
+baseurl: ""
+description: "Fairly average attempt to become a hacker :D"
+url: "https://ohnomaxx.github.io"
+github_username: ohnomaxx
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:path/
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - vendor/
+  - .agents/
+  - .aws/
+  - .codex/
+
+# Keep theme templates and assets together.
+includes_dir: _layouts

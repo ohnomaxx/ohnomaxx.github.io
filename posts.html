@@ -1,0 +1,21 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+<div class="section-heading"><h2>Posts</h2><span>{{ site.posts.size }} entries</span></div>
+{% if site.posts.size > 0 %}
+<ul class="notes-tree">
+  {% for post in site.posts %}
+  <li class="note-item">
+    <a href="{{ post.url | relative_url }}">
+      <span>{{ post.title | escape }}</span>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+      
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No posts yet.</p>
+{% endif %}

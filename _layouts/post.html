@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% if page.collection == 'notes' %}
+<div class="note-reader">
+  <button class="sidebar-toggle" type="button" aria-controls="notes-sidebar" aria-expanded="true" aria-label="Hide sidebar" title="Hide sidebar" hidden><span aria-hidden="true">‹</span></button>
+  <aside class="notes-sidebar" id="notes-sidebar">
+      <nav aria-label="Notes index">
+        {% include _includes/notes-tree.html prefix='_notes/' sidebar=true %}
+      </nav>
+  </aside>
+{% endif %}
+<article class="article">
+  <a class="back-link" href="{{ '/' | relative_url }}">All notes</a>
+  <header class="article-header">
+  <h1>{{ page.title | escape }}</h1>
+  <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+  </header>
+  <div class="prose">{{ content }}</div>
+</article>
+
+{% if page.collection == 'notes' %}
+</div>
+<script>{% include assets/js/sidebar.js %}</script>
+{% endif %}
