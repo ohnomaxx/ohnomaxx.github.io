@@ -4,7 +4,8 @@
   --ink: #252923;
   --muted: #6f746b;
   --line: #dddfd6;
-  --accent: #577445;
+  --accent: #e5b700;
+  --accent-text: #806400;
   font-family: "Maple Mono NF CN", "Maple Mono", monospace;
   color: var(--ink);
   background: var(--paper);
@@ -13,9 +14,9 @@
 * { box-sizing: border-box; }
 body { margin: 0 auto; padding: 0 32px; max-width: 1000px; line-height: 1.7; }
 a { color: inherit; text-underline-offset: 4px; }
-a:hover { color: var(--accent); }
+a:hover { color: var(--accent-text); }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
-::selection { background: #dce6d1; color: #252923; }
+::selection { background: #f5df82; color: #252923; }
 .site-header { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-bottom: 1px solid var(--line); }
 .wordmark { font-weight: 650; letter-spacing: -.05em; font-size: 23px; text-decoration: none; }
 .wordmark::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 12px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
@@ -23,10 +24,10 @@ nav { display: flex; gap: 28px; font-size: 14px; }
 nav a { text-decoration: none; }
 .intro { padding: 82px 0 70px; }
 .eyebrow, .folder-label, .section-heading, .site-footer, .back-link, time { font-family: "Maple Mono NF CN", "Maple Mono", monospace; }
-.eyebrow { color: var(--accent); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; margin: 0 0 22px; }
+.eyebrow { color: var(--accent-text); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; margin: 0 0 22px; }
 h1, h2, h3 { line-height: 1.25; font-weight: 500; }
 .intro h1 { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: clamp(36px, 6vw, 62px); font-weight: 400; letter-spacing: -.045em; margin: 0; }
-.accent { color: var(--accent); }
+.accent { color: var(--accent-text); }
 .intro-copy { color: var(--muted); font-size: 15px; margin-top: 24px; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 15px; margin-top: 40px; }
 .section-heading h2 { font-size: 13px; margin: 0; font-weight: 500; }
@@ -34,7 +35,7 @@ h1, h2, h3 { line-height: 1.25; font-weight: 500; }
 .notes-tree { list-style: none; padding: 0; margin: 0; }
 .note-folder { margin: 28px 0; }
 .folder-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 10px; overflow-wrap: anywhere; }
-.folder-label::before { content: "/ "; color: var(--accent); }
+.folder-label::before { content: "/ "; color: var(--accent-text); }
 .note-folder > .notes-tree { border-left: 1px solid var(--line); padding-left: 24px; }
 .note-folder .note-folder { margin: 18px 0; }
 .note-item a { display: flex; align-items: baseline; gap: 16px; padding: 15px 0; text-decoration: none; border-bottom: 1px solid var(--line); }
@@ -67,7 +68,7 @@ code { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: .9em
 .note-reader .article { width: 100%; min-width: 0; margin: 0 auto; }
 .notes-sidebar { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
 .sidebar-toggle { position: absolute; left: 272px; top: 8px; width: 24px; height: 64px; padding: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; color: var(--muted); background: transparent; font: inherit; font-size: 24px; cursor: pointer; }
-.sidebar-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.sidebar-toggle:hover { color: var(--accent-text); border-color: var(--accent-text); }
 .sidebar-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .notes-sidebar summary { cursor: pointer; }
 .notes-sidebar summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -78,7 +79,7 @@ code { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: .9em
 .notes-sidebar details > .notes-tree { padding-left: 12px; border-left: 1px solid var(--line); }
 .notes-sidebar .note-item a { padding: 8px; font-size: 13px; border: 0; }
 .notes-sidebar .note-item time { display: none; }
-.notes-sidebar [aria-current="page"] { background: #e9eddf; color: var(--accent); border-radius: 3px; font-weight: 600; }
+.notes-sidebar [aria-current="page"] { background: #fff0b3; color: var(--accent-text); border-radius: 3px; font-weight: 600; }
 .note-reader.sidebar-hidden { grid-template-columns: minmax(0, 1fr); padding-left: 36px; }
 .sidebar-hidden .sidebar-toggle { left: 0; }
 @media (max-width: 850px) {
