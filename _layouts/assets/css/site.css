@@ -103,3 +103,7 @@ code { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: .9em
 }
 
 button, input, textarea, select { font-family: inherit; }
+
+.note-changelog { margin-top: 48px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.note-changelog summary { cursor: pointer; font-weight: 600; }
+.note-changelog summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
