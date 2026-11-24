@@ -63,11 +63,11 @@ code { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: .9em
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
 .skip-link { position: absolute; top: -100px; padding: 8px 16px; background: var(--paper); }
 .skip-link:focus { top: 8px; }
-.note-page { max-width: 1280px; }
+.note-page { max-width: 1280px; --reader-left: max(32px, calc((100% - 1216px) / 2)); }
 .note-reader { position: relative; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px; align-items: start; margin: 48px 0; }
 .note-reader .article { width: 100%; min-width: 0; margin: 0 auto; }
 .notes-sidebar { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
-.sidebar-toggle { position: absolute; left: 272px; top: 8px; width: 24px; height: 64px; padding: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; color: var(--muted); background: transparent; font: inherit; font-size: 24px; cursor: pointer; }
+.sidebar-toggle { position: fixed; z-index: 10; left: calc(var(--reader-left) + 272px); top: 50%; transform: translateY(-50%); width: 24px; height: 64px; padding: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; color: var(--muted); background: var(--paper); font: inherit; font-size: 24px; cursor: pointer; }
 .sidebar-toggle:hover { color: var(--accent-text); border-color: var(--accent-text); }
 .sidebar-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .notes-sidebar summary { cursor: pointer; }
@@ -81,15 +81,16 @@ code { font-family: "Maple Mono NF CN", "Maple Mono", monospace; font-size: .9em
 .notes-sidebar .note-item time { display: none; }
 .notes-sidebar [aria-current="page"] { background: #fff0b3; color: var(--accent-text); border-radius: 3px; font-weight: 600; }
 .note-reader.sidebar-hidden { grid-template-columns: minmax(0, 1fr); padding-left: 36px; }
-.sidebar-hidden .sidebar-toggle { left: 0; }
+.sidebar-hidden .sidebar-toggle { left: var(--reader-left); }
 @media (max-width: 850px) {
   .note-reader, .note-reader.sidebar-hidden { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 24px; }
   .note-reader { padding-left: 36px; }
-  .sidebar-toggle { left: 0; }
+  .sidebar-toggle { left: var(--reader-left); }
   .notes-sidebar { position: static; max-height: none; }
   .notes-sidebar nav { max-height: 280px; overflow-y: auto; }
 }
 @media (max-width: 600px) {
+  .note-page { --reader-left: 20px; }
   body { padding: 0 20px; }
   .site-header { padding: 24px 0; }
   .intro { padding: 56px 0 48px; }
